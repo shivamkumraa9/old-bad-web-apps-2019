@@ -1,0 +1,109 @@
+{% extends "c_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Profile</title>
+{% endblock %}
+
+{% block c_content %}
+
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="manage-jobs-sec">
+					 			<h3>Candidates Dashboard</h3>
+					 			{% if not request.link.has_profile and not request.link.has_resume %}
+									<div class="row text-center">
+										<div class="mx-4 alert alert-info alert-dismissible fade show mt-2" role="alert">
+									  		Increase your chances of getting hired by setting a killer <a href="{% url 'core:edit_resume' %}" class="alert-link">Resume</a> and <a href="{% url 'core:candidate_profile' %}" class="alert-link">Profile</a>
+									  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									    	<span aria-hidden="true">&times;</span>
+									  	</button>
+										</div>
+									</div>
+					 			{% elif not request.link.has_profile %}
+									<div class="row text-center">
+										<div class="mx-4 alert alert-info alert-dismissible fade show mt-2" role="alert">
+									  		Increase your chances of getting hired by setting a killer <a href="{% url 'core:candidate_profile' %}" class="alert-link">Profile</a>
+									  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									    	<span aria-hidden="true">&times;</span>
+									  	</button>
+										</div>
+									</div>
+					 			{% elif not request.link.has_resume %}
+									<div class="row text-center">
+										<div class="mx-4 alert alert-info alert-dismissible fade show mt-2" role="alert">
+									  		Increase your chances of getting hired by setting a killer <a href="{% url 'core:edit_resume' %}" class="alert-link">Resume</a>
+									  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									    	<span aria-hidden="true">&times;</span>
+									  	</button>
+										</div>
+									</div>
+					 			{% endif %}
+
+						 		<div class="cat-sec">
+									<div class="row no-gape">
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:job_search' %}" title="">
+													<i class="la la-paper-plane"></i>
+													<span>Search Jobs</span>
+													<p>Search for a new job</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:candidate_profile' %}" title="">
+													<i class="la la-file"></i>
+													<span>My Profile</span>
+													<p>View Profile</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:applied_jobs' %}" title="">
+													<i class="la la-briefcase"></i>
+													<span>Applied Job</span>
+													<p>Take a look</p>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="cat-sec">
+									<div class="row no-gape">
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category view-resume-list">
+												<a href="{% url 'core:edit_resume' %}" title="">
+													<i class="la la-eye"></i>
+													<span>Your Resume</span>
+													<p>Edit Now</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category follow-companies-popup">
+												<a href="{% url 'core:candidate_single' request.link.pk %}" title="">
+													<i class="la la-user"></i>
+													<span>Public Profile</span>
+													<p>Check Your Public Profile!</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:logout' %}" title="">
+													<i class="la la-file-text "></i>
+													<span>Logout</span>
+													<p>Logout Now!</p>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+					 		</div>
+					 	</div>
+					</div>
+
+{% endblock %}

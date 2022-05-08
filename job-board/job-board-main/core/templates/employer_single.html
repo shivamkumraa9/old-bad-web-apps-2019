@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Job Hunt - Employer</title>
+{% endblock %}
+
+
+{% block content %}
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url({% static 'images/resource/mslider1.jpg' %}) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Employer Page</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block">
+			<div class="container">
+				<div class="row">
+				 	<div class="col-lg-12 column">
+				 		<div class="job-single-sec style3">
+				 			<div class="job-head-wide">
+				 				<div class="row">
+				 					<div class="col-lg-10">
+				 						<div class="job-single-head3 emplye">
+							 				<div class="job-thumb"> <img src="{{ emp.profile_pic.url }}" alt="" /></div>
+							 				<div class="job-single-info3">
+							 					<h3>
+							 						{% if emp.full_name %}
+							 							{{ emp.full_name }}
+							 						{% else %}
+							 							{{ emp.link.user.username }}
+							 						{% endif %}
+							 					</h3>
+							 					<span>
+							 					{% if emp.country %}<i class="la la-map-marker"></i>{{ emp.country }}{% endif %}
+							 					{% if emp.city %}, {{ emp.city }}{% endif %}
+							 					</span>
+							 				</div>
+							 			</div><!-- Job Head -->
+				 					</div>
+				 					<div class="col-lg-2 align-self-center">
+				 						<div class="share-bar">
+					 						{% if emp.linkedin %}
+					 							<a href="{{ emp.linkedin }}" title="" class="share-google"><i class="la la-linkedin"></i></a>
+					 						{% endif %}
+					 						{% if emp.facebook %}
+					 							<a href="{{ emp.facebook }}" title="" class="share-fb"><i class="fa fa-facebook"></i></a>
+					 						{% endif %}
+					 						{% if emp.twitter %}
+					 							<a href="{{ emp.twitter }}" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
+					 						{% endif %}	
+							 			</div>
+				 					</div>
+				 				</div>
+				 			</div>
+				 			<div class="job-wide-devider">
+							 	<div class="row">
+							 		<div class="col-lg-8 column">		
+							 			<div class="job-details">
+							 				{% if emp.description %}
+							 				<h3>About</h3>
+							 				<p>{{ emp.description }}</p>
+							 				{% endif %}
+							 			</div>
+							 			{% if jobs %}
+								 		<div class="recent-jobs">
+							 				<h3>Jobs From Company</h3>
+							 				<div class="job-list-modern">
+											 	<div class="job-listings-sec no-border">
+											 		{% for i in jobs %}
+													<div class="job-listing wtabs noimg">
+														<div class="job-title-sec">
+															<h3><a href="#" title="">{{ i.title }}</a></h3>
+															<div class="job-lctn"><i class="la la-map-marker"></i>{{ i.city }}, {{ i.country }}</div>
+														</div>
+														<div class="job-style-bx">
+															<span class="job-is pt ">{{ i.job_type }}</span>
+															<span class="fav-job"><i class="la la-heart-o"></i></span>
+														</div>
+													</div>
+											 		{% endfor %}
+												</div>
+											 </div>
+							 			</div>
+							 			{% endif %}
+
+							 		</div>
+							 		<div class="col-lg-4 column">
+							 			<div class="job-overview">
+								 			<h3>Company Information</h3>
+								 			<ul>
+								 				{% if emp.website %}
+												<li><i class="la la-globe"></i><h3>Website </h3><span>{{ emp.website }}</span></li>
+								 				{% endif %}
+
+								 				{% if jobs %}
+												<li><i class="la la-file-text"></i><h3>Posted Jobs</h3><span>{{ jobs|length }}</span></li>
+								 				{% endif %}
+
+								 				
+								 				<li><i class="la la-map"></i><h3>Locations</h3><span>{% if emp.country %}{{ emp.country }}{% endif %}{% if emp.city %} ,{{ emp.city }}{% endif %}</span></li>
+
+
+								 				{% if emp.since %}
+												<li><i class="la la-clock-o"></i><h3>Since</h3><span>{{ emp.since }}</span></li>
+								 				{% endif %}
+
+								 				{% if emp.team_size %}
+												<li><i class="la la-users"></i><h3>Team Size</h3><span>{{ emp.team_size }}</span></li>
+								 				{% endif %}
+								 				
+								 			</ul>
+								 		</div><!-- Job Overview -->
+							 		</div>
+							 	</div>
+							 </div>
+					 	</div>
+				 	</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}

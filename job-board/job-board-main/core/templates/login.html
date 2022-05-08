@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Job Hunt - Login</title>
+{% endblock %}
+
+{% block navtype %}
+gradient
+{% endblock %}
+
+{% block content %}
+
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Login</h3>
+								<span>Keep up to date with the latest news</span>
+							</div>
+							<div class="page-breacrumbs">
+								<ul class="breadcrumbs">
+									<li><a href="#" title="">Home</a></li>
+									<li><a href="#" title="">Pages</a></li>
+									<li><a href="#" title="">Login</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signin-popup-box static">
+							<div class="account-popup">
+								{% if error %}
+									<span class="text-danger">{{ error }}</span>
+								{% else %}
+									<span id="msg">Enter your email/username and password to Login</span>
+								{% endif %}
+								<form method="POST">
+									{% csrf_token %}
+									<div class="cfield">
+										<input required="true" type="text" placeholder="Email/Username" name="email" value="{{ email }}" />
+										<i class="la la-user"></i>
+									</div>
+									<div class="cfield">
+										<input required="true" type="password" placeholder="********" name="password" value="{{ password }}" />
+										<i class="la la-key"></i>
+									</div>
+									<a href="/password-reset/" title="">Forgot Password?</a>
+									<button type="submit">Login</button>
+								</form>
+							</div>
+						</div><!-- LOGIN POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

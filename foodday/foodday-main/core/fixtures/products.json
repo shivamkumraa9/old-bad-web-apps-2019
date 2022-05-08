@@ -1,0 +1,157 @@
+[
+    {
+      "model": "core.Catagory",
+      "pk": 1,
+      "fields": {
+        "name": "Breakfast",
+        "image_path":"assets/images/product/pd-cat-dessert.png"
+      }
+    },
+    {
+      "model": "core.Catagory",
+      "pk": 2,
+      "fields": {
+        "name": "Lunch",
+        "image_path":"assets/images/product/pd-cat-lunch.png"
+      }
+    },
+    {
+      "model": "core.Catagory",
+      "pk": 3,
+      "fields": {
+        "name": "Dinner",
+        "image_path":"assets/images/product/pd-cat-dinner.png"
+      }
+    },
+    {
+      "model": "core.Catagory",
+      "pk": 4,
+      "fields": {
+        "name": "Desset",
+        "image_path":"assets/images/product/pd-cat-dessert.png"
+      }
+    },
+    {
+      "model": "core.Catagory",
+      "pk": 5,
+      "fields": {
+        "name": "Drink",
+        "image_path":"assets/images/product/pd-cat-lunch.png"
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 1,
+      "fields": {
+        "catagory":[1, 3, 5],
+        "name": "Mexico Beafsteak Potato fly",
+        "image_path":"assets/images/product/product-2a.jpg",
+        "price":25.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 2,
+      "fields": {
+        "catagory":[1, 3],
+        "name": "Mexico Beafsteak Potato",
+        "image_path":"assets/images/product/product-2b.jpg",
+        "price":5.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 3,
+      "fields": {
+        "catagory":[1, 2, 3],
+        "name": "Madagasca Lopster Tasty",
+        "image_path":"assets/images/product/product-2c.jpg",
+        "price":20.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 4,
+      "fields": {
+        "catagory":[1, 2, 4],
+        "name": "Jambon Salad Hot Bread",
+        "image_path":"assets/images/product/product-2e.jpg",
+        "price":45.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 5,
+      "fields": {
+        "catagory":[1, 2],
+        "name": "Mexico Beafsteak Potato",
+        "image_path":"assets/images/product/product-2f.jpg",
+        "price":15.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 6,
+      "fields": {
+        "catagory":[1, 3],
+        "name": "Madagasca Lopster Tasty",
+        "image_path":"assets/images/product/product-2d.jpg",
+        "price":30.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 7,
+      "fields": {
+        "catagory":[1, 5],
+        "name": "Jambon Salad Hot Bread",
+        "image_path":"assets/images/product/product-2k.jpg",
+        "price":45.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 8,
+      "fields": {
+        "catagory":[1, 4],
+        "name": "Mexico Beafsteak Potato",
+        "image_path":"assets/images/product/product-2l.jpg",
+        "price":15.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    },
+    {
+      "model": "core.Product",
+      "pk": 8,
+      "fields": {
+        "catagory":[1, 5],
+        "name": "Madagasca Lopster Tasty",
+        "image_path":"assets/images/product/product-2n.jpg",
+        "price":15.0,
+        "chef_name":"Don Joe",
+        "description":"Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko. Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram corn pea. Brussels sprout coriander water chestnut gourd swiss chard."
+
+      }
+    }
+]

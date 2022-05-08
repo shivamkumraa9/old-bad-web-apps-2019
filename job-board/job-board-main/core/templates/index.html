@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Job Hunt</title>
+{% endblock %}
+
+{% block navtype %}
+stick-top forsticky
+{% endblock %}
+
+{% block content %}
+
+	<section>
+		<div class="block no-padding">
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="main-featured-sec">
+							<ul class="main-slider-sec text-arrows">
+								<li class="slideHome"><img src="{% static 'images/resource/mslider3.jpg' %}" alt="" /></li>
+								<li class="slideHome"><img src="{% static 'images/resource/mslider2.jpg' %}" alt="" /></li>
+								<li class="slideHome"><img src="{% static 'images/resource/mslider1.jpg' %}" alt="" /></li>
+							</ul>
+							<div class="job-search-sec">
+								<div class="job-search">
+									<h3>Find your dream web development job</h3>
+									<span>Find Jobs, Employment & Career Opportunities</span>
+									<form action="{% url 'core:job_search' %}">
+										<div class="row">
+											<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+												<div class="job-field">
+													<input required type="text" placeholder="Job title, keywords" name="keyword" />
+													<i class="la la-keyboard-o"></i>
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-5 col-sm-12 col-xs-12">
+												<div class="job-field">
+													<input type="text" placeholder="City Name" name="city" />
+													<i class="la la-map-marker"></i>
+												</div>
+											</div>
+											<div class="col-lg-3 col-md-5 col-sm-12 col-xs-12">
+												<div class="job-field">
+													<input type="text" placeholder="Country Name" name="country" />
+													<i class="la la-map-marker"></i>
+												</div>
+											</div>
+											<div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
+												<button type="submit"><i class="la la-search"></i></button>
+											</div>
+										</div>
+									</form>
+									<div class="or-browser">
+										<span>Browse job offers by</span>
+										<a href="#" title="">Category</a>
+									</div>
+								</div>
+							</div>
+							<div class="scroll-to">
+								<a href="#scroll-here" title=""><i class="la la-arrow-down"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="scroll-here">
+		<div class="block">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="heading">
+							<h2>Featured Jobs</h2>
+							<span>Leading Employers already using job and talent.</span>
+						</div><!-- Heading -->
+						<div class="job-listings-sec">
+							{% for i in jobs %}
+								<a target="_blank" href="{% url 'core:job_single' i.pk %}">
+								<div class="job-listing">
+									<div class="job-title-sec">
+										<div class="c-logo"> <img src="{{ i.employer.profile_pic.url }}" alt="" /> </div>
+										<h3>{{ i.title }}</h3>
+										<span>{{ i.employer.full_name }}</span>
+									</div>
+									<span class="job-lctn"><i class="la la-map-marker"></i>{{ i.city }}, {{ i.country }}</span>
+									<span class="fav-job"><i class="la la-heart-o"></i></span>
+									<span class="job-is ft">{{ i.job_type }}</span>
+								</div>
+								</a>			
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block double-gap-top double-gap-bottom">
+			<div data-velocity="-.1" style="background: url({% static 'images/resource/parallax1.jpg' %}) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible layer color"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="simple-text-block">
+							<h3>Make a Difference with Your Online Resume!</h3>
+							<span>Your resume in minutes with JobHunt resume assistant is ready!</span>
+							<a href="{% url 'core:register' %}" title="">Create an Account</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</section>
+
+	<section>
+		<div class="block">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="heading">
+							<h2>Companies We've Helped</h2>
+							<span>Some of the companies we've helped recruit excellent applicants over the years.</span>
+						</div><!-- Heading -->
+						<div class="comp-sec">
+							<div class="company-img">
+								<a href="#" title=""><img src="{% static 'images/resource/cc1.jpg' %}" alt="" /></a>
+							</div><!-- Client  -->
+							<div class="company-img">
+								<a href="#" title=""><img src="{% static 'images/resource/cc2.jpg' %}" alt="" /></a>
+							</div><!-- Client  -->
+							<div class="company-img">
+								<a href="#" title=""><img src="{% static 'images/resource/cc3.jpg' %}" alt="" /></a>
+							</div><!-- Client  -->
+							<div class="company-img">
+								<a href="#" title=""><img src="{% static 'images/resource/cc4.jpg' %}" alt="" /></a>
+							</div><!-- Client  -->
+							<div class="company-img">
+								<a href="#" title=""><img src="{% static 'images/resource/cc5.jpg' %}" alt="" /></a>
+							</div><!-- Client  -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

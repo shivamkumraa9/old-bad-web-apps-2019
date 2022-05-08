@@ -1,0 +1,492 @@
+{% extends "c_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Profile</title>
+{% endblock %}
+
+{% block c_content %}
+
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="manage-jobs-sec">
+					 			<div class="border-title"><h3>Education</h3><a class="education-popup" href="#"><i class="la la-plus"></i> Add New</a>
+					 			</div>
+						 		<div class="edu-history-sec education">
+						 			{% for i in edu %}
+		 							<div class="edu-history">
+		 								<i class="la la-graduation-cap"></i>
+		 								<div class="edu-hisinfo">
+		 									<h3>{{ i.level }}</h3>
+		 									<i>{{ i.start }} - {{ i.end }}</i>
+		 									<span>{{ i.institution }} <i>{{ i.degree }}</i></span>
+		 									<p>{{ i.description }}</p>
+		 								</div>
+		 								<ul class="action_job">
+				 							<li><span>Delete</span><a onclick="delete_education({{ i.pk }},this)"  href="#" title=""><i class="la la-trash-o"></i></a></li>
+				 						</ul>
+		 							</div>		
+						 			{% endfor %}
+
+		 						</div>
+		 						<div class="border-title"><h3>Work Experience</h3><a class="experience-popup" href="#" title=""><i class="la la-plus"></i> Add New</a></div>
+						 		<div class="edu-history-sec experience">
+						 			{% for i in exp %}
+									<div class="edu-history style2">
+		 								<i></i>
+		 								<div class="edu-hisinfo">
+		 									<h3>{{ i.role }} <span>{{ i.company_name }}</span></h3>
+		 									<i>{{ i.start }} - {{ i.end }}</i>
+		 									<p>{{ i.description }}</p>
+		 								</div>
+		 								<ul class="action_job">
+				 							<li><span>Delete</span><a onclick="delete_experience({{ i.pk }},this)"  href="#" title=""><i class="la la-trash-o"></i></a></li>
+				 						</ul>
+		 							</div>	
+						 			{% endfor %}
+		 						</div>
+		 						<div class="border-title"><h3>Portfolio</h3><a class="portfolio-popup" href="#" title=""><i class="la la-plus"></i> Add New</a></div>
+		 						<div class="mini-portfolio portfolio">
+		 							<div class="mp-row">
+						 			{% for i in por %}
+										<div class="mp-col">
+		 									<div class="mportolio"><img src="{{ i.image.url }}" alt="" /><a href="{{ i.name }}" title=""><i class="la la-search"></i></a></div>
+		 									<ul class="action_job">
+					 							<li><span>Delete</span><a  onclick="delete_portfolio({{ i.pk }},this)" href="#" title=""><i class="la la-trash-o"></i></a></li>
+					 						</ul>
+		 								</div>	
+						 			{% endfor %}						
+		 							</div>
+		 						</div>
+		 						<div class="border-title"><h3>Professional Skills</h3><a class="skill-popup"  href="#" title=""><i class="la la-plus"></i> Add New</a></div>
+		 						<div class="progress-sec progress-pp">
+						 			{% for i in ski %}
+									<div class="progress-sec with-edit">
+		 								<span>{{ i.name }}</span>
+		 								<div class="progressbar"> <div class="progress" style="width: {{ i.percentage }}%;"><span>{{ i.percentage }}%</span></div> </div>
+		 								<ul class="action_job">
+				 							<li><span>Delete</span><a  onclick="delete_ski({{ i.pk }},this)" href="#" title=""><i class="la la-trash-o"></i></a></li>
+				 						</ul>
+		 							</div> 
+						 			{% endfor %}
+		 						</div>
+		 						<div class="border-title"><h3>Add Awards</h3><a  class="award-popup" href="#" title=""><i class="la la-plus"></i> Add New</a></div>
+		 						<div class="edu-history-sec award">
+						 			{% for i in awa %}
+										<div class="edu-history style2">
+			 								<i></i>
+			 								<div class="edu-hisinfo">
+			 									<h3>{{ i.name }}</h3>
+			 									<i>{{ i.year }}</i>
+			 									<p>{{ i.description }}</p>
+			 								</div>
+			 								<ul class="action_job">
+					 							<li><span>Delete</span><a  onclick="delete_award({{ i.pk }},this)"  href="#" title=""><i class="la la-trash-o"></i></a></li>
+					 						</ul>
+			 							</div>
+						 			{% endfor %}
+		 						</div>
+					 		</div>
+					 	</div>
+					</div>
+{% endblock %}
+
+{% block popups %}
+
+<div class="account-popup-area education-popup-box">
+	<div class="account-popup" style="width: 600px; left: 40%; margin-top: 50px;">
+		<span class="close-popup"><i class="la la-close"></i></span>
+		<h3>Add Education</h3>
+		<!-- <span>Add a new Education</span> -->
+		<form class="edu-form">
+		<div class="row">
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Institution</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Institution Name" name="institution" />
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Degree Name</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Degree Name" name="degree" />
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Start Year</span>
+				<div class="cfield">
+					<select name="start" class="chosen">
+								<option>2020</option>
+								<option>2021</option>
+					</select>
+				</div>			
+			</div>	
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">End Year</span>
+				<div class="cfield">
+					<select name="end" class="chosen">
+								<option>2020</option>
+								<option>2021</option>
+					</select>
+				</div>				
+			</div>
+			<div class="col-lg-12">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Level</span>
+				<div class="cfield">
+					<select name="level" class="chosen">
+								<option>2020</option>
+								<option>2021</option>
+					</select>
+				</div>				
+			</div>
+			<div class="col-lg-12">
+				<span class="pf-title text-left m-0 ml-2 mb-2">description</span>
+				<div class="cfield">
+ 						<div class="pf-field">
+ 							<textarea style="min-height: 50px;" name="description"></textarea>
+ 						</div>
+				</div>				
+			</div>
+		</div>
+			<button class="edu-add" type="submit">Add</button>
+		</form>
+	</div>
+</div>
+
+<div class="account-popup-area experience-popup-box">
+	<div class="account-popup" style="width: 600px; left: 40%; margin-top: 50px;">
+		<span class="close-popup"><i class="la la-close"></i></span>
+		<h3>Add Experience</h3>
+		<!-- <span>Add a new Education</span> -->
+		<form class="exp-form">
+		<div class="row">
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Company Name</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Company Name" name="company_name" />
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Start Year</span>
+				<div class="cfield">
+					<select name="start" class="chosen">
+								<option>2020</option>
+								<option>2021</option>
+					</select>
+				</div>			
+			</div>	
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">End Year</span>
+				<div class="cfield">
+					<select name="end" class="chosen">
+								<option>2020</option>
+								<option>2021</option>
+					</select>
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Role</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Enter Role" name="role" />
+				</div>				
+			</div>
+			<div class="col-lg-12">
+				<span class="pf-title text-left m-0 ml-2 mb-2">description</span>
+				<div class="cfield">
+ 						<div class="pf-field">
+ 							<textarea style="min-height: 50px;" name="description"></textarea>
+ 						</div>
+				</div>				
+			</div>
+		</div>
+			<button class="edu-add" type="submit">Add</button>
+		</form>
+	</div>
+</div>
+
+<div class="account-popup-area portfolio-popup-box">
+	<div class="account-popup" style="width: 600px; left: 40%; margin-top: 50px;">
+		<span class="close-popup"><i class="la la-close"></i></span>
+		<h3>Add Portfolio</h3>
+		<!-- <span>Add a new Education</span> -->
+		<form class="por-form" action="{% url 'core:por_create' %}" method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+		<div class="row">
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Link</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Name" name="name" />
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">image</span>
+				<div class="cfield">
+					<input type="file"id="myFile" name="image" class="file" accept="image/*" />				
+				</div>
+			</div>	
+		</div>
+			<button class="edu-add" type="submit">Add</button>
+		</form>
+	</div>
+</div>
+
+<div class="account-popup-area skill-popup-box">
+	<div class="account-popup" style="width: 600px; left: 40%; margin-top: 50px;">
+		<span class="close-popup"><i class="la la-close"></i></span>
+		<h3>Add Skill</h3>
+		<!-- <span>Add a new Education</span> -->
+		<form class="ski-form">
+		<div class="row">
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">Skill Name</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Skill Name" name="name" />
+				</div>				
+			</div>	
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">percentage</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Enter percentage" name="percentage" />
+				</div>				
+			</div>
+		</div>
+			<button class="por-add" type="submit">Add</button>
+		</form>
+	</div>
+</div>
+
+<div class="account-popup-area award-popup-box">
+	<div class="account-popup" style="width: 600px; left: 40%; margin-top: 50px;">
+		<span class="close-popup"><i class="la la-close"></i></span>
+		<h3>Add Education</h3>
+		<!-- <span>Add a new Education</span> -->
+		<form class="awa-form">
+		<div class="row">
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">name</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Name" name="name" />
+				</div>				
+			</div>
+			<div class="col-lg-6">
+				<span class="pf-title text-left m-0 ml-2 mb-2">year</span>
+				<div class="cfield">
+					<input type="text" required placeholder="Add Name" name="year" />
+				</div>				
+			</div>	
+			<div class="col-lg-12">
+				<span class="pf-title text-left m-0 ml-2 mb-2">description</span>
+				<div class="cfield">
+ 						<div class="pf-field">
+ 							<textarea style="min-height: 50px;" name="description"></textarea>
+ 						</div>
+				</div>				
+			</div>
+		</div>
+			<button class="edu-add" type="submit">Add</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+
+
+<script type="text/javascript">
+
+    $('.award-popup').on('click', function(){
+        $('.award-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.award-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+    $(".awa-form").submit(function(e){
+        e.preventDefault();
+        const data = $(".awa-form").serializeArray().reduce((obj, item) => ({ ...obj, ...{ [item.name]: item.value } }), {});;
+	  $.post("{% url 'core:awa_create' %}",data, function(resukt, status){
+	    if(resukt.status === 'okay'){
+        $('.award-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+        const element = `
+<div class="edu-history style2">
+	<i></i>
+	<div class="edu-hisinfo">
+		<h3>${data.name} </h3>
+		<i>${data.year} </i>
+		<p>${data.description}</p>
+	</div>
+	<ul class="action_job">
+		<li><span>Delete</span><a onclick="delete_award(${resukt.pk},this)" href="#" title=""><i class="la la-trash-o"></i></a></li>
+	</ul>
+	</div> 
+        `
+        $( ".award" ).append( element );
+        document.querySelector(".awa-form").reset();
+
+	    }
+	 });
+    });
+
+    const delete_award = (pk,element)=>{
+	  $.post(`/api/awa-delete/${pk}/`, function(resukt, status){
+	  	element.parentNode.parentNode.parentNode.style.display = 'none';
+    })
+	}
+
+
+
+
+    $('.education-popup').on('click', function(){
+        $('.education-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.education-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+    $(".edu-form").submit(function(e){
+        e.preventDefault();
+        const data = $(".edu-form").serializeArray().reduce((obj, item) => ({ ...obj, ...{ [item.name]: item.value } }), {});;
+	  $.post("{% url 'core:edu_create' %}",data, function(resukt, status){
+	    if(resukt.status === 'okay'){
+        $('.experience-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+        const element = `
+<div class="edu-history">
+	<i class="la la-graduation-cap"></i>
+		 	<div class="edu-hisinfo">
+		 		<h3>${data.level}</h3>
+		 			<i>${data.start} - ${data.end}</i>
+		 			<span>${data.institution} <i>${data.degree}</i></span>
+		 			<p>${data.description}</p>
+		 	</div>
+		 	<ul class="action_job">
+				 <li><span>Delete</span><a href="#"  onclick="delete_education(${resukt.pk},this)" title=""><i class="la la-trash-o"></i></a></li>
+			</ul>
+</div> 
+        `
+        $( ".education" ).append( element );
+        document.querySelector(".edu-form").reset();
+        $('.education-popup-box').fadeOut('fast');
+	    }
+	 });
+    });
+
+    const delete_education = (pk,element)=>{
+	  $.post(`/api/edu-delete/${pk}/`, function(resukt, status){
+	  	element.parentNode.parentNode.parentNode.style.display = 'none';
+    })
+	}
+
+
+
+
+    $('.experience-popup').on('click', function(){
+        $('.experience-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.experience-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+    $(".exp-form").submit(function(e){
+        e.preventDefault();
+        const data = $(".exp-form").serializeArray().reduce((obj, item) => ({ ...obj, ...{ [item.name]: item.value } }), {});;
+	  $.post("{% url 'core:exp_create' %}",data, function(resukt, status){
+	    if(resukt.status === 'okay'){
+        $('.experience-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+        const element = `
+<div class="edu-history style2">
+	<i></i>
+	<div class="edu-hisinfo">
+		<h3>${data.role} <span>${data.company_name}</span></h3>
+		<i>${data.start}  - ${data.end} </i>
+		<p>${data.description}.</p>
+	</div>
+	<ul class="action_job">
+		<li><span>Delete</span><a href="#" onclick="delete_experience(${resukt.pk},this)" title=""><i class="la la-trash-o"></i></a></li>
+	</ul>
+</div>
+        `
+        $( ".experience" ).append( element );
+        document.querySelector(".exp-form").reset();
+
+	    }
+	 });
+    });
+
+    const delete_experience = (pk,element)=>{
+	  $.post(`/api/exp-delete/${pk}/`, function(resukt, status){
+	  	element.parentNode.parentNode.parentNode.style.display = 'none';
+    })
+	}
+
+
+
+
+
+
+    $('.portfolio-popup').on('click', function(){
+        $('.portfolio-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.portfolio-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+
+    const delete_portfolio = (pk,element)=>{
+	  $.post(`/api/por-delete/${pk}/`, function(resukt, status){
+	  	element.parentNode.parentNode.parentNode.style.display = 'none';
+    })
+	}
+
+
+
+    $('.skill-popup').on('click', function(){
+        $('.skill-popup-box').fadeIn('fast');
+        $('html').addClass('no-scroll');
+    });
+    $('.close-popup').on('click', function(){
+        $('.skill-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+    });
+    $(".ski-form").submit(function(e){
+        e.preventDefault();
+        const data = $(".ski-form").serializeArray().reduce((obj, item) => ({ ...obj, ...{ [item.name]: item.value } }), {});;
+	  $.post("{% url 'core:ski_create' %}",data, function(resukt, status){
+	    if(resukt.status === 'okay'){
+        $('.skill-popup-box').fadeOut('fast');
+        $('html').removeClass('no-scroll');
+        const element = `
+<div class="progress-sec with-edit">
+	<span>${data.name}</span>
+	<div class="progressbar"> <div class="progress" style="width: ${data.percentage}%;"><span>${data.percentage}%</span></div> </div>
+	<ul class="action_job">
+		<li><span>Delete</span><a href="#"  onclick="delete_ski(${resukt.pk},this)" title=""><i class="la la-trash-o"></i></a></li>
+	</ul>
+</div> 
+        `
+        $( ".progress-pp" ).append( element );
+        document.querySelector(".ski-form").reset();
+
+	    }
+	 });
+    });
+
+    const delete_ski = (pk,element)=>{
+	  $.post(`/api/ski-delete/${pk}/`, function(resukt, status){
+	  	element.parentNode.parentNode.parentNode.style.display = 'none';
+    })
+	}
+
+
+
+</script>
+
+{% endblock %}

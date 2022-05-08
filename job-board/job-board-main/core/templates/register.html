@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Job Hunt - Register</title>
+{% endblock %}
+
+{% block navtype %}
+gradient
+{% endblock %}
+
+{% block content %}
+
+	<section>
+		<div class="block no-padding  gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner2">
+							<div class="inner-title2">
+								<h3>Register</h3>
+								<span>Keep up to date with the latest news</span>
+							</div>
+							<div class="page-breacrumbs">
+								<ul class="breadcrumbs">
+									<li><a href="#" title="">Home</a></li>
+									<li><a href="#" title="">Register</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="account-popup-area signup-popup-box static">
+							<div class="account-popup">
+								<h3>Sign Up</h3>
+								{% if error %}
+									<span id="msg"></span>
+									<span class="text-danger" id="error">{{ error }}</span>
+								{% else %}
+									<span id="msg">Enter your email and password to signup</span>
+									<span class="text-danger" id="error"></span>
+								{% endif %}
+								<div class="select-user">
+									<span id="candidate">Candidate</span>
+									<span id="employer">Employer</span>
+								</div>
+								<form method="POST" id="registerform">
+									{% csrf_token %}
+									<div class="cfield">
+										<input type="text" placeholder="Username" name="username" value="{{ username }}" />
+										<i class="la la-user"></i>
+									</div>
+									<input id="type" type="hidden" name="type">
+									<div class="cfield">
+										<input required="true" type="email" placeholder="Email" name="email" value="{{ email }}"  />
+										<i class="la la-envelope-o"></i>
+									</div>
+									<div class="cfield">
+										<input required="true" type="password" placeholder="********" name="password"  value="{{ password }}"  />
+										<i class="la la-key"></i>
+									</div>
+									<button type="submit">Signup</button>
+								</form>
+							</div>
+						</div><!-- SIGNUP POPUP -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

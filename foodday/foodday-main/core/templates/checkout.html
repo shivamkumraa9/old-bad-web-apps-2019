@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Checkout
+{% endblock %}
+
+{% block content %}
+<div class="page-content-wrapper">
+  <div class="container">
+    <section class="padding-top-100 padding-bottom-100">
+      <form class="product-checkout-form" v-if="products.length > 0" method="POST" @submit.prevent="submit">
+        {% csrf_token %}
+        <input type="hidden" class="form-control" name="pks">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Billing Details</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input type="text" required="true" class="form-control" name="name">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" required="true" class="form-control" name="email">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="text" required="true" class="form-control" name="phone">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Zip Code</label>
+                  <input type="text" required="true" class="form-control" name="zip_code">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3>&nbsp;</h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Country</label>
+                  <input type="text" required="true" class="form-control" name="country">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" required="true" class="form-control" name="city">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Address</label>
+                  <input type="text" required="true" class="form-control" name="address">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Your order</h3>
+            <table class="shop_table">
+              <thead>
+                <tr>
+                  <th class="product-name">Product</th>
+                  <th class="product-total">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="cart_item"  v-for="product in products" :key="product.pk">
+                  <td class="product-name">[[ product.name ]]							 <strong class="product-quantity">× [[ product.quantity ]]</strong></td>
+                  <td class="product-total"><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>[[ product.totalPrice ]]</span></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr class="cart-subtotal">
+                  <th>Subtotal</th>
+                  <td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>[[ total ]]</span></td>
+                </tr>
+                <tr class="order-total">
+                  <th>Total</th>
+                  <td><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>[[ total ]]</span></strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <div class="col-md-12">
+            <div class="checkout-product-options">
+              <h4>Checkout Method</h4>
+              <div class="form-check">
+                <input id="productQuantity2" type="radio" name="productOption" value="option2" checked="" class="form-check-input">
+                <label for="productQuantity2" class="form-check-label">Cast On Delivery</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button class="swin-btn checkout-submit"><span>Place Order</span></button>
+          </div>
+        </div>
+      </form>
+      <div class="page-content-wrapper" v-else>
+        <section class="ab-timeline-section padding-top-100 padding-bottom-100">
+          <div class="container">
+            <div class="swin-sc swin-sc-title style-2">
+              <h3 class="title"><span>Opps! your cart is empty</span></h3>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}

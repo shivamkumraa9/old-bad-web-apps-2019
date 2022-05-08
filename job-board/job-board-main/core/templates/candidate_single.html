@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Job Hunt - Candidate</title>
+{% endblock %}
+
+
+{% block content %}
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url({% static 'images/resource/mslider1.jpg' %}) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<div class="container">
+								<div class="row">
+									<div class="col-lg-6">
+									</div>
+									<div class="col-lg-6">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="overlape">
+		<div class="block remove-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="cand-single-user">
+							<div class="share-bar circle">
+		 						{% if link.blog %}
+					 				<a href="{{ link.blog }}" title="" class="share-google"><i class="fa fa-link"></i></a>
+		 						{% endif %}
+		 						{% if link.linkedin %}
+					 				<a href="{{ link.linkedin }}" title="" class="share-linkedin"><i class="la la-linkedin"></i></a>
+		 						{% endif %}
+		 						{% if link.facebook %}
+					 				<a href="{{ link.facebook }}" title="" class="share-fb"><i class="fa fa-facebook"></i></a>
+		 						{% endif %}
+		 						{% if link.website %}
+					 				<a href="{{ link.website }}" title="" class="share-linkedin"><i class="fa fa-link"></i></a>
+		 						{% endif %}
+				 			</div>
+				 			<div class="can-detail-s">
+				 				<div class="cst"><img src="{{ link.profile_pic.url }}" alt="" /></div>
+				 				<h3>{% if link.full_name %}{{link.full_name}}{% else %}{{ uu.username }}{% endif %}</h3>
+				 				<span><i>{% if link.job_title %}{{link.job_title}}{% endif %}</i> {% if link.current_company %}at {{link.current_company}}{% endif %}</span>
+			 				<p><a class="__cf_email__">{{ uu.email }}</a></p>
+				 				<p>{% if link.city %}<i class="la la-map-marker"></i> {{link.city}}{% endif %} {% if link.country %} / at {{link.country}}{% endif %}</p>
+				 			</div>
+				 			<div class="download-cv">
+				 				<!-- <a href="#" title="">Download CV <i class="la la-download"></i></a> -->
+				 			</div>
+				 		</div>
+				 		<ul class="cand-extralink">
+				 			{% if link.description %}<li><a href="#about" title="">About</a></li>{% endif %}
+				 			{% if link.edu %}<li><a href="#education" title="">Education</a></li>{% endif %}
+				 			{% if link.exp %}<li><a href="#experience" title="">Work Experience</a></li>{% endif %}
+				 			{% if link.por %}<li><a href="#portfolio" title="">Portfolio</a></li>{% endif %}
+				 			{% if link.ski %}<li><a href="#skills" title="">Professional Skills</a></li>{% endif %}
+				 			{% if link.awa %}<li><a href="#awards" title="">Awards</a></li>{% endif %}
+				 		</ul>
+				 		<div class="cand-details-sec">
+				 			<div class="row">
+				 				<div class="col-lg-8 column">
+				 					<div class="cand-details" id="about">
+				 						{% if link.description %}
+					 						<h2>Candidates About</h2>
+					 						<p>{{ link.description }}</p>
+				 						{% endif %}
+
+				 						{% if edu %}
+				 						<div class="edu-history-sec" id="education">
+				 							<h2>Education</h2>
+								 			{% for i in edu %}
+				 							<div class="edu-history">
+				 								<i class="la la-graduation-cap"></i>
+				 								<div class="edu-hisinfo">
+				 									<h3>{{ i.level }}</h3>
+				 									<i>{{ i.start }} - {{ i.end }}</i>
+				 									<span>{{ i.institution }} <i>{{ i.degree }}</i></span>
+				 									<p>{{ i.description }}</p>
+				 								</div>
+				 							</div>		
+								 			{% endfor %}
+				 						</div>
+				 						{% endif %}
+
+				 						{% if exp %}
+				 						<div class="edu-history-sec" id="experience">
+				 							<h2>Work & Experience</h2>
+								 			{% for i in exp %}
+											<div class="edu-history style2">
+				 								<i></i>
+				 								<div class="edu-hisinfo">
+				 									<h3>{{ i.role }} <span>{{ i.company_name }}</span></h3>
+				 									<i>{{ i.start }} - {{ i.end }}</i>
+				 									<p>{{ i.description }}</p>
+				 								</div>
+
+				 							</div>	
+								 			{% endfor %}
+				 						</div>
+				 						{% endif %}
+
+				 						{% if por %}
+				 						<div class="mini-portfolio" id="portfolio">
+				 							<h2>Portfolio</h2>
+				 							<div class="mp-row">
+									 			{% for i in por %}
+													<div class="mp-col">
+					 									<div class="mportolio"><img src="{{ i.image.url }}" alt="" /><a href="{{ i.name }}" title=""><i class="la la-search"></i></a></div>
+					 								</div>	
+									 			{% endfor %}	
+				 							</div>
+				 						</div>
+				 						{% endif %}
+
+				 						{% if ski %}
+				 						<div class="progress-sec" id="skills">
+				 							<h2>Professional Skills</h2>
+								 			{% for i in ski %}
+											<div class="progress-sec with-edit">
+				 								<span>{{ i.name }}</span>
+				 								<div class="progressbar"> <div class="progress" style="width: {{ i.percentage }}%;"><span>{{ i.percentage }}%</span></div> </div>
+				 							</div> 
+								 			{% endfor %}
+				 						</div>
+				 						{% endif %}
+
+				 						{% if awa %}
+				 						<div class="edu-history-sec" id="awards">
+				 							<h2>Awards</h2>
+								 			{% for i in awa %}
+												<div class="edu-history style2">
+					 								<i></i>
+					 								<div class="edu-hisinfo">
+					 									<h3>{{ i.name }}</h3>
+					 									<i>{{ i.year }}</i>
+					 									<p>{{ i.description }}</p>
+					 								</div>
+					 							</div>
+								 			{% endfor %}
+				 						</div>
+				 						{% endif %}
+
+				 					</div>
+				 				</div>
+				 				<div class="col-lg-4 column">
+						 			<div class="job-overview">
+							 			<h3>Job Overview</h3>
+							 			<ul>
+					 						{% if link.expected_salary %}
+								 				<li><i class="la la-money"></i><h3>Offerd Salary</h3><span>{{ link.expected_salary }}</span></li>
+					 						{% endif %}
+					 						{% if link.gender %}
+								 				<li><i class="la la-mars-double"></i><h3>Gender</h3><span>{{ link.gender }}</span></li>
+					 						{% endif %}
+					 						{% if link.catagory %}
+								 				<li><i class="la la-puzzle-piece"></i><h3>Category</h3><span>{{ link.catagory }}</span></li>
+					 						{% endif %}
+					 						{% if link.experience_level %}
+								 				<li><i class="la la-shield"></i><h3>Experience</h3><span>{{ link.experience_level }}</span></li>
+					 						{% endif %}
+					 						{% if link.experience_level %}
+								 				<li><i class="la la-line-chart "></i><h3>Qualification</h3><span>{{ link.experience_level }}</span></li>
+					 						{% endif %}
+							 			</ul>
+							 		</div><!-- Job Overview -->
+						 		</div>
+				 			</div>
+				 		</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}

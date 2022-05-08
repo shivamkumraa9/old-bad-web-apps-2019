@@ -1,0 +1,118 @@
+Schemas:
+
+Candidate{
+	Profile Photo : Image
+	Full Name : String
+	Title : String
+	Category : String
+	Current Company : String
+	Current Salary : Number
+	Expected Salary : Number
+	Experience : Number
+	Age : Number
+	Gender : String
+	Education Level : String
+	Description : TextArea
+	Linkedin Link : String
+	Facebook Link : String
+	Blog Link : String
+	Personal Website : String
+	email : String(Unique)
+	phone : number
+	Country : String
+	City : String
+	password : String
+	has_resume : Boolean(False)
+	Education:[
+		{
+			Level : String(Eg : high school, Primary School,University)
+			From : Number
+			To : Number
+			Institution Name : String
+			Degree Name : String
+			Description : String
+		}
+	]
+	Experience:[
+		{
+			Company Name : String
+			Role : String
+			From : Number
+			To : Number
+			Description : String
+		}
+	]
+	Portfolio:[
+		{
+			Image : Image
+			Name : String
+			Description : String
+		}
+	]
+	Skill:[
+		{
+			Name : String
+			Percentage : Number
+		}
+	]
+	Award:[
+		{
+			Name : String
+			Year : Number
+			Description
+		}
+	]
+	Applied_Jobs:[
+		{
+			Id : Id of the job Schema
+		}
+	]
+}
+
+Employer{
+	Profile Pic : Profile Picture of the company
+	Company Name : String,
+	Since : Number
+	Team Size : Number
+	Description : Text Area
+	Facebook : Link to the facebook page
+	Linkedin : Link to the linkedIn Page
+	Twitter : Link to the twitter page
+	Website : Link to the website
+	Phone : Number
+	Email : String
+	Country : String
+	City : String
+	Views : Number
+	Password : String
+	Jobs : [
+		{
+			Id of the created jobs
+		}
+	] 
+}
+
+Job{
+	Employer : Id of the employer
+	Job Title : String
+	Job Type : String (Eg : Full Time, Part Time, Remote)
+	Description : Html String (XSS Safe)
+	Category : String
+	Offered Salary : Number
+	Experience : String
+	Education : String
+	Gender : String
+	Status : String (Open, Closed)
+	Views : Number
+	Applicants : [
+		{
+			id : Id of the applied candidates,
+			Short listed : False
+		}
+	]
+	Skills : [
+		{
+			Required Skills
+		}
+	]
+}

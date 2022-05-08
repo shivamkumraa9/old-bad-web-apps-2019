@@ -1,0 +1,208 @@
+{% extends "c_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Profile</title>
+{% endblock %}
+
+{% block c_content %}
+
+<div class="col-lg-9 column">
+	<div class="padding-left">
+ 		<form method="POST" enctype="multipart/form-data">
+	 		{% csrf_token %}
+	 		<div class="profile-title">
+	 			<h3>My Profile</h3>
+	 			<div class="upload-img-bar">
+	 				<span class="round"><img src="{{ request.link.profile_pic.url }}" id="specia" alt="" /></span>
+	 				<div class="upload-info">
+	 					<a href="#" title="">Browse</a>
+					 <input type="file" onchange="loadFile(event)" id="myFile" name="filename" class="file" accept="image/*" hidden />
+
+	 					<span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
+	 				</div>
+	 				<script type="text/javascript">
+	 					document.querySelector(".upload-info a").addEventListener('click', (event)=>{
+	 						event.preventDefault()
+	 						document.querySelector('.file').click();
+	 					});
+						let loadFile = function(event) {
+							var image = document.getElementById('specia');
+							image.src = URL.createObjectURL(event.target.files[0]);
+						};
+	 				</script>
+	 			</div>
+	 		</div>
+ 		<div class="profile-form-edit">
+ 				<div class="row">
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Full Name</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="Full Name" name="full_name" value="{% if request.link.full_name %}{{ request.link.full_name }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Job Title</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="Job Title" name="job_title" value="{% if request.link.full_name %}{{ request.link.full_name }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Current Salary (If Any)</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="$" name="current_salary" value="{% if request.link.current_salary %}{{ request.link.current_salary }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Current Company (If Any)</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="Company Name" name="current_company"   value="{% if request.link.current_company %}{{ request.link.current_company }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Experience</span>
+ 						<div class="pf-field">
+ 							<select name="experience_level" data-placeholder="Allow In Search" class="chosen">
+ 								{% if request.link.experience_level %}
+	 								<option>{{ request.link.experience_level }}</option>
+	 							{% else %}
+	 								<option></option>
+ 								{% endif %}
+								<option>0 to 1 Years</option>
+								<option>1 to 3 Years</option>
+								<option>3 to 5 Years</option>
+								<option>5+ Years</option>
+							</select>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Education Level</span>
+ 						<div class="pf-field">
+ 							<select name="education_level" data-placeholder="Allow In Search" class="chosen">
+ 								{% if request.link.education_level %}
+	 								<option>{{ request.link.education_level }}</option><hr />
+	 							{% else %}
+	 								<option></option>
+ 								{% endif %}
+								<option>High School</option>
+								<option>Graduation</option>
+								<option>Post Graduation</option>
+								<option>Doctorate</option>
+							</select>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Catagory</span>
+ 						<div class="pf-field">
+ 							<select name="catagory" data-placeholder="Allow In Search" class="chosen">
+ 								{% if request.link.catagory %}
+	 								<option>{{ request.link.catagory }}</option>
+	 							{% else %}
+	 								<option></option>
+ 								{% endif %}
+								<option>Full Stack Development</option>
+								<option>Frontend Development</option>
+								<option>Backend Development</option>
+								<option>Wordpress Development</option>
+								<option>Ecommerce Development</option>
+								<option>Dev Ops</option>
+							</select>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">gender</span>
+ 						<div class="pf-field">
+ 							<select name="gender" data-placeholder="Allow In Search" class="chosen">
+ 								{% if request.link.gender %}
+	 								<option>{{ request.link.gender }}</option>
+	 							{% else %}
+	 								<option></option>
+ 								{% endif %}
+								<option>Male</option>
+								<option>Female</option>
+							</select>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Expected Salary</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="$" name="expected_salary" value="{% if request.link.expected_salary %}{{ request.link.expected_salary }}{% endif %}"/>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Age</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="age" name="age"  value="{% if request.link.age %}{{ request.link.age }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-12">
+ 						<span class="pf-title">Description</span>
+ 						<div class="pf-field">
+ 							<textarea name="description">{{ request.link.description }}</textarea>
+ 						</div>
+ 					</div>
+ 				</div>
+ 		</div>
+ 		<div class="social-edit">
+ 			<h3>Social Edit</h3>
+ 				<div class="row">
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Linkedin</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.linkedin.com" name="linkedin" value="{% if request.link.linkedin %}{{ request.link.linkedin }}{% endif %}" />
+ 							<i class="fa fa-linkedin"></i>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Facebook</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.facebook.com"name="facebook" value="{% if request.link.facebook %}{{ request.link.facebook }}{% endif %}" />
+ 							<i class="fa fa-facebook"></i>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Blog</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.myblog.com"name="blog" value="{% if request.link.blog %}{{ request.link.blog }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Website</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.mysite.com"name="website" value="{% if request.link.website %}{{ request.link.website }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 				</div>
+ 		</div>
+ 		<div class="contact-edit">
+ 			<h3>Contact</h3>
+ 				<div class="row">
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">Phone Number</span>
+ 						<div class="pf-field">
+ 							<input name="phone" type="text" placeholder="Phone Number" value="{% if request.link.phone %}{{ request.link.phone }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">Country</span>
+ 						<div class="pf-field">
+ 							<input name="country" type="text" placeholder="Country" value="{% if request.link.country %}{{ request.link.country }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">City</span>
+ 						<div class="pf-field">
+ 							<input name="city" type="text" placeholder="City" value="{% if request.link.city %}{{ request.link.city }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-12">
+ 						<button type="submit">Update</button>
+ 					</div>
+ 				</div>
+ 		</div>
+	 		</form>
+	 	</div>
+	</div>
+
+
+{% endblock %}

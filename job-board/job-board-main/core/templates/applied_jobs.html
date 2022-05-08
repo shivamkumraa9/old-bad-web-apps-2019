@@ -1,0 +1,51 @@
+{% extends "c_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Applied Jobs</title>
+{% endblock %}
+
+{% block c_content %}
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="manage-jobs-sec">
+					 			<h3>Manage Jobs</h3>
+						 		<table>
+						 			<thead>
+						 				<tr>
+						 					<td>Applied Job</td>
+						 					<td>Position</td>
+						 					<td>Salary</td>
+						 					<td></td>
+						 				</tr>
+						 			</thead>
+						 			<tbody>
+						 				{% for i in request.link.appliedjobs.jobs.all %}
+						 				<tr>
+						 					<td>
+						 						<div class="table-list-title">
+						 							<i>{% if i.employer.full_name %}{{ i.employer.full_name }}{% else %}{{ i.employer.link.user.username }}{% endif %}</i><br />
+						 							<span><i class="la la-map-marker"></i>{{ i.country }}, {{ i.city }}</span>
+						 						</div>
+						 					</td>
+						 					<td>
+						 						<div class="table-list-title">
+						 							<h3><a href="#" title=""> {{ i.title }}</a></h3>
+						 						</div>
+						 					</td>
+						 					<td>
+						 						<span>{{ i.salary_offered }}</span><br />
+						 					</td>
+						 					<td>
+						 						<ul class="action_job">
+						 							<li><span>View Job</span><a href="{% url 'core:job_single' i.pk %}" title=""><i class="la la-eye"></i></a></li>
+						 						</ul>
+						 					</td>
+						 				</tr>
+						 				{% endfor %}
+						 			</tbody>
+						 		</table>
+					 		</div>
+					 	</div>
+					</div>
+{% endblock %}

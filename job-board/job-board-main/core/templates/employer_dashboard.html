@@ -1,0 +1,90 @@
+{% extends "e_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Dashboard</title>
+{% endblock %}
+
+{% block c_content %}
+
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="manage-jobs-sec">
+					 			<h3>Employer Dashboard</h3>
+					 			{% if not request.link.has_profile%}
+									<div class="row text-center">
+										<div class="mx-4 alert alert-info alert-dismissible fade show mt-2" role="alert">
+									  		Before moving forward make sure to set up your company's <a href="{% url 'core:candidate_profile' %}" class="alert-link">Profile</a>
+									  	<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									    	<span aria-hidden="true">&times;</span>
+									  	</button>
+										</div>
+									</div>
+					 			{% endif %}
+						 		<div class="cat-sec">
+									<div class="row no-gape">
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:employer_dashboard' %}" title="">
+													<i class="la la-file-text"></i>
+													<span>DashBoard</span>
+													<p>Control your activity</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category view-resume-list">
+												<a href="{% url 'core:employer_profile' %}" title="">
+													<i class="la la-user"></i>
+													<span>Company Profile</span>
+													<p>See your profile</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:employer_jobs' %}" title="">
+													<i class="la la-briefcase "></i>
+													<span>Manage Jobs</span>
+													<p>CRUD Jobs</p>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="cat-sec">
+									<div class="row no-gape">
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:employer_newjob' %}" title="">
+													<i class="la la-paper-plane"></i>
+													<span>Post a New Job</span>
+													<p>Create a new</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category follow-companies-popup">
+												<a href="{% url 'core:change_password' %}" title="">
+													<i class="la la-flash"></i>
+													<span>Change Password</span>
+													<p>Change Now!</p>
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-12">
+											<div class="p-category">
+												<a href="{% url 'core:logout' %}" title="">
+													<i class="la la-unlink"></i>
+													<span>Logout</span>
+													<p>Logout Now!</p>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+					 		</div>
+					 	</div>
+					</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "e_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Employer's Profile</title>
+{% endblock %}
+
+{% block c_content %}
+				 	<div class="col-lg-9 column">
+				 		<div class="padding-left">
+					 		<div class="manage-jobs-sec">
+					 			<h3>Manage Jobs</h3>
+						 		<table>
+						 			<thead>
+						 				<tr>
+						 					<td>Title</td>
+						 					<td>Applications</td>
+						 					<td>Status</td>
+						 					<td>Action</td>
+						 				</tr>
+						 			</thead>
+						 			<tbody>
+						 				{% for i in jobs %}
+						 				<tr>
+						 					<td>
+						 						<div class="table-list-title">
+						 							<h3><a href="#" title="">{{ i.title }}</a></h3>
+						 							<span><i class="la la-map-marker"></i>{{ i.city }}, {{ i.country }}</span>
+						 						</div>
+						 					</td>
+						 					<td>
+						 						<span class="applied-field">
+						 							{% if i.applicants.all|length %}
+						 								{{ i.applicants.all|length }}
+						 							{% else %}
+						 								0
+						 							{% endif %}
+						 						
+						 						</span>
+						 					</td>
+						 					<td>
+						 						<span class="status active">{{ i.status }}</span>
+						 					</td>
+						 					<td>
+						 						<ul class="action_job">
+						 							<li><span>View Job</span><a href="{% url 'core:job_single' i.pk %}" title=""><i class="la la-eye"></i></a></li>
+						 							<li><span>Applicants</span><a href="{% url 'core:resumes' i.pk %}" title=""><i class="la la-user"></i></a></li>
+						 							<li><span>Edit</span><a href="{% url 'core:employer_editjob' i.pk %}" title=""><i class="la la-pencil"></i></a></li>
+						 							<li><span>Delete</span><a href="#" onclick="deleteJob(`{% url 'core:employer_deletejob' i.pk %}`,this)" title=""><i class="la la-trash-o"></i></a></li>
+						 						</ul>
+						 					</td>
+						 				</tr>
+						 				{% endfor %}
+						 			</tbody>
+						 		</table>
+					 		</div>
+					 	</div>
+					</div>
+{% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+	const deleteJob = (link,ele) =>{
+		$.get( link, function( data ) {});
+		ele.parentNode.parentNode.parentNode.parentNode.remove()
+	}
+</script>
+{% endblock %}

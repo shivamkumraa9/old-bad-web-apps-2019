@@ -1,0 +1,130 @@
+{% extends "e_base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Employer's Profile</title>
+{% endblock %}
+
+{% block c_content %}
+
+<div class="col-lg-9 column">
+	<div class="padding-left">
+ 		<form method="POST" enctype="multipart/form-data">
+	 		{% csrf_token %}
+	 		<div class="profile-title">
+	 			<h3>Company's Profile</h3>
+	 			<div class="upload-img-bar">
+	 				<span class="round"><img src="{{ request.link.profile_pic.url }}" id="specia" alt="" /></span>
+	 				<div class="upload-info">
+	 					<a href="#" title="">Browse</a>
+					 <input type="file" onchange="loadFile(event)" id="myFile" name="filename" class="file" accept="image/*" hidden />
+
+	 					<span>Max file size is 1MB, Minimum dimension: 270x210 And Suitable files are .jpg & .png</span>
+	 				</div>
+	 				<script type="text/javascript">
+	 					document.querySelector(".upload-info a").addEventListener('click', (event)=>{
+	 						event.preventDefault()
+	 						document.querySelector('.file').click();
+	 					});
+						let loadFile = function(event) {
+							var image = document.getElementById('specia');
+							image.src = URL.createObjectURL(event.target.files[0]);
+						};
+	 				</script>
+	 			</div>
+	 		</div>
+ 		<div class="profile-form-edit">
+ 				<div class="row">
+ 					<div class="col-lg-12">
+ 						<span class="pf-title">Company's Name</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="Full Name" name="full_name" value="{% if request.link.full_name %}{{ request.link.full_name }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Since</span>
+ 						<div class="pf-field">
+	 						<div class="pf-field">
+	 							<input type="text" placeholder="since" name="since" value="{% if request.link.since %}{{ request.link.since }}{% endif %}" />
+	 						</div>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Team Size</span>
+ 						<div class="pf-field">
+	 						<div class="pf-field">
+	 							<input type="text" placeholder="team_size" name="team_size" value="{% if request.link.team_size %}{{ request.link.team_size }}{% endif %}" />
+	 						</div>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-12">
+ 						<span class="pf-title">Description</span>
+ 						<div class="pf-field">
+ 							<textarea name="description">{{ request.link.description }}</textarea>
+ 						</div>
+ 					</div>
+ 				</div>
+ 		</div>
+ 		<div class="social-edit">
+ 			<h3>Social Edit</h3>
+ 				<div class="row">
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Linkedin</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.linkedin.com" name="linkedin" value="{% if request.link.linkedin %}{{ request.link.linkedin }}{% endif %}" />
+ 							<i class="fa fa-linkedin"></i>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Facebook</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.facebook.com"name="facebook" value="{% if request.link.facebook %}{{ request.link.facebook }}{% endif %}" />
+ 							<i class="fa fa-facebook"></i>
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">twitter</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.twitter.com"name="twitter" value="{% if request.link.twitter %}{{ request.link.twitter }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-6">
+ 						<span class="pf-title">Website</span>
+ 						<div class="pf-field">
+ 							<input type="text" placeholder="www.mysite.com"name="website" value="{% if request.link.website %}{{ request.link.website }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 				</div>
+ 		</div>
+ 		<div class="contact-edit">
+ 			<h3>Contact</h3>
+ 				<div class="row">
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">Phone Number</span>
+ 						<div class="pf-field">
+ 							<input name="phone" type="text" placeholder="Phone Number" value="{% if request.link.phone %}{{ request.link.phone }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">Country</span>
+ 						<div class="pf-field">
+ 							<input name="country" type="text" placeholder="Country" value="{% if request.link.country %}{{ request.link.country }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-4">
+ 						<span class="pf-title">City</span>
+ 						<div class="pf-field">
+ 							<input name="city" type="text" placeholder="City" value="{% if request.link.city %}{{ request.link.city }}{% endif %}" />
+ 						</div>
+ 					</div>
+ 					<div class="col-lg-12">
+ 						<button type="submit">Update</button>
+ 					</div>
+ 				</div>
+ 		</div>
+	 		</form>
+	 	</div>
+	</div>
+
+
+{% endblock %}

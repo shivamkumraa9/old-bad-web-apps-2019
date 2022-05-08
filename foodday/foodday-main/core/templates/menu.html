@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Menu
+{% endblock %}
+{% block content %}
+<div class="page-container">
+   <div data-bottom-top="background-position: 50% 50px;" data-center="background-position: 50% 0px;" data-top-bottom="background-position: 50% -50px;" class="page-title page-menu">
+      <div class="container">
+         <div class="title-wrapper">
+            <div data-top="transform: translateY(0px);opacity:1;" data--20-top="transform: translateY(-5px);" data--50-top="transform: translateY(-15px);opacity:0.8;" data--120-top="transform: translateY(-30px);opacity:0;" data-anchor-target=".page-title" class="title">Our Menu</div>
+            <div data-top="opacity:1;" data--120-top="opacity:0;" data-anchor-target=".page-title" class="divider"><span class="line-before"></span><span class="dot"></span><span class="line-after"></span></div>
+            <div data-top="transform: translateY(0px);opacity:1;" data--20-top="transform: translateY(5px);" data--50-top="transform: translateY(15px);opacity:0.8;" data--120-top="transform: translateY(30px);opacity:0;" data-anchor-target=".page-title" class="subtitle">The various dishes are waiting for your coming to enjoy its</div>
+         </div>
+      </div>
+   </div>
+   <div class="page-content-wrapper">
+      <section class="product-sesction-02 padding-top-100 padding-bottom-100">
+         <div class="container">
+            <div class="swin-sc swin-sc-title style-3">
+               <p class="title"><span>Breakfast Time</span></p>
+            </div>
+            <div class="swin-sc swin-sc-product products-02 carousel-02">
+               <div class="row">
+                  <div class="col-md-2"></div>
+                  <div data-slide-toshow="5" class="cat-wrapper-02 main-slider col-md-8">
+                     <div class="item">
+                        <div class="cat-icons">
+                           <i class="icons swin-icon-pasta"></i>
+                           <h5 class="cat-title">Breakfast</h5>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="cat-icons">
+                           <i class="icons swin-icon-fish"></i>
+                           <h5 class="cat-title">Lunch</h5>
+                        </div>
+                     </div>
+                     <div class="item">
+                        <div class="cat-icons"><i class="icons swin-icon-meat"></i></div>
+                        <h5 class="cat-title">Dinner</h5>
+                     </div>
+                     <div class="item">
+                        <div class="cat-icons"><i class="icons swin-icon-ice-cream"></i></div>
+                        <h5 class="cat-title">Desset</h5>
+                     </div>
+                     <div class="item">
+                        <div class="cat-icons"><i class="icons swin-icon-dinner"></i></div>
+                        <h5 class="cat-title">Drink</h5>
+                     </div>
+                  </div>
+                  <div class="col-md-2"></div>
+               </div>
+               <div class="products nav-slider">
+                  {% for catagory in catagories %}
+                  <div class="row slick-padding">
+                     {% for product in catagory.catagory_products.all %}
+                     <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="blog-item item swin-transition">
+                           <div class="block-img">
+                              <img src="{% static product.image_path %}" alt="" class="img img-responsive">
+                              <div class="block-circle price-wrapper"><span class="price woocommerce-Price-amount amount"><span class="price-symbol">$</span>{{ product.price }}</span></div>
+                              <div class="group-btn"><a href="javascript:void(0)" data-toggle="dialog" data-target="#add-to-cart-dialog-{{ product.pk }}" tab-index="0" class="swin-btn btn-add-to-card"><i class="fa fa-shopping-basket"></i></a></div>
+                           </div>
+                           <div class="block-content">
+                              <h5 class="title"><a  target="_blank"  href="{% url 'core:product' product.pk %}">{{ product.name }}</a></h5>
+                              <div class="product-info">
+                                 <ul class="list-inline">
+                                    <li class="author"><span>Chef</span><span class="text">{{ product.chef_name }}</span></li>
+                                    <li class="rating"><a href="javascript:void(0)"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></a></li>
+                                  </ul>
+                              </div>
+                           </div>
+                        </div>
+
+                     </div>
+                     {% endfor %}
+                  </div>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+      </section>
+      <section class="product-sesction-03-1 padding-top-100 padding-bottom-100">
+         <img src="{% static 'assets/images/product/product-decorate.jpg' %}" alt="" class="img-responsive img-decorate">
+         <div class="container">
+            <div class="row">
+               <div class="col-lg-6 col-md-4"></div>
+               <div class="col-lg-6 col-md-8">
+                  <div class="swin-sc swin-sc-title text-left light">
+                     <p class="top-title"><span>chef choise</span></p>
+                     <h3 class="title">Daily Special</h3>
+                  </div>
+                  <div class="swin-sc swin-sc-product products-01 style-04 light swin-vetical-slider">
+                     <div class="row">
+                        <div class="col-md-12">
+                          <div data-height="200" class="products nav-slider">
+                            {% for product in products %}
+                              <div class="item product-01">
+                                <div class="item-left">
+                                  <img src="{% static product.image_path %}" alt="" class="img img-responsive">
+                                  <div class="content-wrapper">
+                                      <a class="title">{{ product.name }}</a>
+                                      <div class="dot">.....................................................................</div>
+                                      <div class="des">{{ product.short_description }} </div>
+                                  </div>
+                                </div>
+                                <div class="item-right"><span class="price woocommerce-Price-amount amount"><span class="price-symbol">$</span>{{ product.price }}</span></div>
+                            </div>
+                            {% endfor %}
+                          </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+</div>
+
+  {% for catagory in catagories %}
+    {% for product in catagory.catagory_products.all %}
+    <div id="add-to-cart-dialog-{{ product.pk }}" class="add-to-card-dialog dialog">
+      <div class="dialog__overlay"></div>
+      <div class="dialog__content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="dialog-product-img"><img src="{% static product.image_path %}" alt="fooday" class="img img-responsive"></div>
+            </div>
+            <div class="col-md-7">
+              <div class="dialog-product-title">{{ product.name }}</div>
+              <div class="dialog-product-price">${{ product.price }}</div>
+              <div class="product-quanlity">
+                <div class="input-group">
+                  <input type="text" name="quanlity" disabled placeholder="" value="1" class="form-control"><a href="javascript:void(0)" class="quanlity-plus"><i class="fa fa-plus"></i></a><a href="javascript:void(0)" class="quanlity-minus"><i class="fa fa-minus"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="dialog-product-options">
+                <p class="option-title">Description</p>
+                <div class="form-check">
+                  <p class="form-check-label">{{ product.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="dialog-button-group">
+            <a href="{% url 'core:cart' %}" class="swin-btn btn-transparent" v-if="products.length > 0"><span>View Cart</span></a>
+          <a @click="DialogAddToCart($event, {pk:{{ product.pk }}, name:'{{product.name}}', description: '{{product.description}}', price: '{{product.price}}', image_path: '{{product.image_path}}'})" class="swin-btn open-toast"><span>Add To Cart</span></a></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>Job Search</title>
+{% endblock %}
+
+{% block content %}
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url({% static 'images/resource/mslider1.jpg' %}) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header wform">
+							<div class="job-search-sec">
+								<div class="job-search">
+									<h4>Find You Dream Web Development Job...</h4>
+									<form class="mera-form">
+										<div class="row">
+											<div class="col-lg-5">
+												<div class="job-field">
+													<input required type="text" placeholder="Job title, keywords" name="keyword" class="likhti" />
+													<i class="la la-keyboard-o"></i>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="job-field">
+													<input type="text" placeholder="City Name" name="city" class="likhti" />
+													<i class="la la-map-marker"></i>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="job-field">
+													<input type="text" placeholder="Country Name" name="country" class="likhti" />
+													<i class="la la-map-marker"></i>
+												</div>
+											</div>
+											<div class="col-lg-1">
+												<button class="submit-btn" type="submit"><i class="la la-search"></i></button>
+											</div>
+										</div>
+									</form>
+									<div class="tags-bar">
+
+								 	</div><!-- Tags Bar -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block remove-top">
+			<div class="container">
+				 <div class="row no-gape">
+				 	<aside class="col-lg-3 column">
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Catagory</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="catagory" value="Full Stack Development" id="19"><label for="19">Full Stack Development</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="catagory" value="Frontend Development" id="20"><label for="20">Frontend Development</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="catagory" value="Backend Development" id="21"><label for="21">Backend Development</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="catagory" value="Wordpress Development" id="22"><label for="22">Wordpress Development</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="catagory" value="Ecommerce Development" id="23"><label for="23">Ecommerce Development</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="catagory" value="Dev Ops" id="24"><label for="24">Dev Ops</label></p>
+				 			</div>
+				 		</div>
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Job Type</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="job_type" value="Full Time" id="3"><label for="3">Full Time</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="job_type" value="Parttime" id="4"><label for="4">Parttime</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="job_type" value="Internship" id="5"><label for="5">Internship</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="job_type" value="Freelance" id="6"><label for="6">Freelance</label></p>
+				 			</div>
+				 		</div>
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Experience</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="experience_required" value="0 to 1 Years" id="7"><label for="7">0 to 1 Years</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="experience_required" value="1 to 3 Years" id="8"><label for="8">1 to 3 Years</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="experience_required" value="3 to 5 Years" id="9"><label for="9">3 to 5 Years</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="experience_required" value="5+ Years" id="10"><label for="10">5+ Years</label></p>
+				 			</div>
+				 		</div>
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Education</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="education_level" value="High School" id="11"><label for="11">High School</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="education_level" value="Graduation" id="12"><label for="12">Graduation</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="education_level" value="Post Graduation" id="13"><label for="13">Post Graduation</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="education_level" value="Doctorate" id="14"><label for="14">Doctorate</label></p>
+				 			</div>
+				 		</div>
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Salary</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="salary_offered" value="(0-1000)$" id="15"><label for="15">(0-1000)$</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="salary_offered" value="(1000-5000)$" id="16"><label for="16">(1000-5000)$</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="salary_offered" value="(5000-10000)$" id="17"><label for="17">(5000-10000)$</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="salary_offered" value="10000$ +" id="18"><label for="18">10000$ +</label></p>
+				 			</div>
+				 		</div>
+				 		<div class="widget border">
+				 			<h3 class="sb-title open active closed">Gender</h3>
+				 			<div class="type_widget">
+								<p class="flchek"><input class="check" type="checkbox" name="gender" value="Male" id="1"><label for="1">Male</label></p>
+								<p class="ftchek"><input class="check" type="checkbox" name="gender" value="Female" id="2"><label for="2">Female</label></p>
+				 			</div>
+				 		</div>
+				 		<script type="text/javascript">
+const page = 0
+const data = {
+    page:0,
+    keyword:'',
+    city:'',
+    country:'',
+    gender:[],
+    job_type:[],
+    salary_offered:[],
+    experience_required:[],
+    education_level:[],
+    catagory:[],
+    }
+
+ const load_more_jobs = ()=>{
+           let xhr = new XMLHttpRequest(); 
+            xhr.open("POST", "{% url 'core:job_query' %}", true); 
+            xhr.setRequestHeader("Content-Type", "application/json"); 
+             xhr.onreadystatechange = function () { 
+                if (xhr.readyState === 4 && xhr.status === 200) { 
+                	const resp = JSON.parse(this.responseText)
+                	
+                	if(resp.data.length > 0){
+                		document.querySelector('.load-more').style.display = "block"
+                		document.querySelector('.no-jobs').style.display = "none"
+                		resp.data.forEach((ela)=>{
+         				let neww = document.createElement('a')
+                		neww.href = `/job-single/${ela.pk}/`
+                		neww.target = "_blank";
+                		neww.innerHTML = `
+                				<div class="job-listing wtabs">
+									<div class="job-title-sec">
+										<div class="c-logo"> <img src="${ela.url}" alt="" /> </div>
+										<h3><a href="#" title="">${ela.title}</a></h3>
+										<span>${ela.company_name}</span>
+										<div class="job-lctn"><i class="la la-map-marker"></i>${ela.city}, ${ela.country}</div>
+									</div>
+									<div class="job-style-bx">
+										<span class="job-is ft">${ela.job_type}</span>
+										<span class="fav-job"><i class="la la-heart-o"></i></span>
+									</div>
+								</div>
+                		`
+                		document.querySelector('.job-listings-sec').appendChild(neww)                			
+                		})
+
+                	}else{
+                		document.querySelector('.load-more').style.display = "none"
+                		document.querySelector('.no-jobs').style.display = "block"
+                	}
+                } 
+            }; 
+            data.page = data.page + 1
+            xhr.send(JSON.stringify(data));
+ }
+
+document.querySelector('.mera-form').addEventListener('submit',(event)=>{
+	event.preventDefault()
+           let xhr = new XMLHttpRequest(); 
+            xhr.open("POST", "{% url 'core:job_query' %}", true); 
+            xhr.setRequestHeader("Content-Type", "application/json"); 
+            xhr.onreadystatechange = function () { 
+                if (xhr.readyState === 4 && xhr.status === 200) { 
+                	const resp = JSON.parse(this.responseText)
+                	document.querySelector('.job-listings-sec').innerHTML = ''
+                	
+                	if(resp.data.length > 0){
+                		document.querySelector('.load-more').style.display = "block"
+                		document.querySelector('.no-jobs').style.display = "none"
+                		// page += 1
+                		resp.data.forEach((ela)=>{
+         				let neww = document.createElement('a')
+                		neww.href = `/job-single/${ela.pk}/`
+                		neww.target = "_blank";
+                		neww.innerHTML = `
+                				<div class="job-listing wtabs">
+									<div class="job-title-sec">
+										<div class="c-logo"> <img src="${ela.url}" alt="" /> </div>
+										<h3><a href="#" title="">${ela.title}</a></h3>
+										<span>${ela.company_name}</span>
+										<div class="job-lctn"><i class="la la-map-marker"></i>${ela.city}, ${ela.country}</div>
+									</div>
+									<div class="job-style-bx">
+										<span class="job-is ft">${ela.job_type}</span>
+										<span class="fav-job"><i class="la la-heart-o"></i></span>
+									</div>
+								</div>
+                		`
+                		document.querySelector('.job-listings-sec').appendChild(neww)                			
+                		})
+
+                	}else{
+                		document.querySelector('.job-listings-sec').innerHTML = '<h2 class="text-center mt-4">Sorry! no jobs found</h2>'
+                		document.querySelector('.load-more').style.display = "none"
+                		document.querySelector('.no-jobs').style.display = "none"
+                	}
+                } 
+            }; 
+            data.page = 0
+            xhr.send(JSON.stringify(data)); })
+
+document.querySelectorAll('.likhti').forEach((element)=>{
+	element.addEventListener('input',function(){
+		data[element.name] = element.value
+	})
+})
+
+const close_btn = (ele) =>{
+	let name = ele.getAttribute("data-iname")
+	let value = ele.getAttribute("data-ivalue")
+	data[name] = data[name].filter(e => e !== value)
+	ele.parentNode.remove()
+	document.querySelector(`input[name='${name}'][value='${value}']`).checked = false
+}
+
+const checks = document.querySelectorAll('.check')
+checks.forEach((element)=>{element.addEventListener('change',function(){
+	if(element.checked){
+		data[element.name].push(element.value)
+		let child = document.createElement("span");
+		child.innerHTML = `${element.value}<i data-iname='${element.name}' data-ivalue='${element.value}' class="close-tags" onclick="close_btn(this)">x</i>`
+		document.querySelector('.tags-bar').appendChild(child)
+	}else{
+		data[element.name] = data[element.name].filter(e => e !== element.value)
+		document.querySelectorAll('.close-tags').forEach((ele)=>{
+			if (ele.getAttribute("data-iname") === element.name && ele.getAttribute("data-ivalue") === element.value){
+				ele.parentNode.remove()
+			}
+		})
+	}
+}
+	)})
+
+
+let from_home = false
+let url = new URL(window.location.href);
+let key = url.searchParams.get("keyword")
+let ci = url.searchParams.get("city")
+let co = url.searchParams.get("country")
+
+if(key){
+	from_home = true;
+	document.querySelector('.likhti[name=keyword]').value = key;
+}
+if(ci){
+	document.querySelector('.likhti[name=city]').value = ci;
+}
+if(co){
+	document.querySelector('.likhti[name=country]').value = co;
+}
+
+if(from_home){
+	// document.querySelector('.mera-form').submit()
+	document.querySelector('.submit-btn').click()
+}
+
+				 		</script>
+
+			 			<div class="banner_widget">
+			 				<a href="#" title=""><img src="images/resource/banner.png" alt="" /></a>
+						</div>
+				 	</aside>
+				 	<div class="col-lg-9 column">
+				 		<div class="modrn-joblist np">
+					 		<div class="filterbar">
+					 			<h5 >Job Results : </h5>
+					 		</div>
+						 </div><!-- MOdern Job LIst -->
+						 <div class="job-list-modern">
+						 	<div class="job-listings-sec no-border">
+							</div>
+							<div class="row">
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<div class="browse-all-cat" style="width:70%">
+										<a onclick="load_more_jobs()" style="display: none;" class="load-more" href="javascript:;" title="">Load more listings</a>
+										<h6 class="no-jobs" style="display: none;">No More Jobs!</h6>
+									</div>
+								</div>
+								<div class="col-md-4"></div>								
+							</div>
+
+						 </div>
+					 </div>
+				 </div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}
